@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const xlsx = require('xlsx');
 
 async function generatePersonalizedCommunication(excelFilePath, senderName, senderTitle, communicationType) {
-    const genAI = new GoogleGenerativeAI("AIzaSyAJTfmOaT02tJZacgAzYq9t0EgIyzpCIR4");
+    const genAI = new GoogleGenerativeAI("");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     try {
