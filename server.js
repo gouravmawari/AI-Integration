@@ -83,14 +83,13 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
 
             console.log(`\n${communicationType.charAt(0).toUpperCase() + communicationType.slice(1)} to: ${name}\n`);
             console.log(communication);
-            console.log("----------------------------------------");
         }
     } catch (error) {
         console.error("Error processing Excel file:", error);
     }
 }
 
-generatePersonalizedCommunication("./AI_dataset.xlsx", "John Smith", "Hiring Manager", "message");
+generatePersonalizedCommunication("./AI_dataset.xlsx", "Elon musko", "Hiring Manager", "message");
 
 
 
