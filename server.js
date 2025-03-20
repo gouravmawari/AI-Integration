@@ -62,8 +62,7 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 .replace(/wouldn't/g, "would not")
                 .replace(/[,!—\-\(\)]/g, "") 
                 .replace(/\n\n+/g, "\n") 
-                .replace(/\s+/g, " "); 
-            console.log(`\n${communicationType.charAt(0).toUpperCase() + communicationType.slice(1)} to: ${name}\n`);
+                .replace(/\s+/g, " ");
             console.log(communication);
         }
     } catch (error) {
