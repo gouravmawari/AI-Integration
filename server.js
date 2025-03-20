@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const xlsx = require('xlsx');
 
 async function generatePersonalizedCommunication(excelFilePath, senderName, senderTitle, communicationType, senderCompany) {
-    const genAI = new GoogleGenerativeAI("AIzaSyAJTfmOaT02tJZacgAzYq9t0EgIyzpCIR4");
+    const genAI = new GoogleGenerativeAI("");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     try {
@@ -18,8 +18,6 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 console.error("Missing data for user:", userData);
                 continue;
             }
-
-            // System Prompt: Defines the AI's tone and behavior
             const systemPrompt = `
                 You are a witty charismatic recruiter who loves making people laugh
                 Your goal is to charm candidates with humor and confidence while staying professional yet casual
@@ -30,8 +28,6 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 Do not use symbols like exclamation marks commas dashes or parentheses
                 Keep it simple and friendly with no extra spaces between lines
             `;
-
-            // User Prompt: Specific instructions for the task
             const userPrompt = `
                 Compose a short humorous and hyper-personalized invitation message to ${name} for an interview at ${senderCompany}
                 ${senderName} ${senderTitle} at ${senderCompany} is sending this invitation
