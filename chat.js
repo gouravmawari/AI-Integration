@@ -2,25 +2,25 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const xlsx = require("xlsx");
 
 async function generatePersonalizedCommunication(excelFilePath, senderName, senderTitle, communicationType, senderCompany) {
-    const genAI = new GoogleGenerativeAI("AIzaSyAJTfmOaT02tJZacgAzYq9t0EgIyzpCIR4"); 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const genAI = new GoogleGenerativeAI("AIzaSyAJTfmOaT02tJZacgAzYq9t0EgIyzpCIR4");
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    try {
-        const workbook = xlsx.readFile(excelFilePath);
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = xlsx.utils.sheet_to_json(sheet);
+  try {
+    const workbook = xlsx.readFile(excelFilePath);
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const jsonData = xlsx.utils.sheet_to_json(sheet);
 
-        for (const userData of jsonData) {
-            const { name, companyName, collegeName, age } = userData;
+    for (const userData of jsonData) {
+      const { name, companyName, collegeName, age } = userData;
 
-            if (!name || !companyName || !collegeName || !age) {
-                console.error("Missing data for user:", userData);
-                continue;
-            }
+      if (!name || !companyName || !collegeName || !age) {
+        console.error("Missing data for user:", userData);
+        continue;
+      }
 
-            const systemPrompt = `
-                You are an expert AI assistant specializing in hyper-personalized outreach and communication. Your goal is to craft compelling, customized, and engaging messages that demonstrate deep research on the recipient and highlight how your expertise or opportunity aligns with their background and interests.
+      const systemPrompt = `
+        You are an expert AI assistant specializing in hyper-personalized outreach and communication. Your goal is to craft compelling, customized, and engaging messages that demonstrate deep research on the recipient and highlight how your expertise or opportunity aligns with their background and interests.
 
                 Key Guidelines:
                 1. **Strictly Use Provided Data**: 
@@ -56,34 +56,14 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 - Avoid using symbols like exclamation marks, commas, dashes, or parentheses.
                 - Do not use contractions like “who’s” or “let’s”—use full words like “who is” and “let us.”
                 - Ensure the message flows naturally and feels like it was written by a human.
-
-                8. **Examples for Reference**:
-                - Example 1: 
-                    
-                    Hey I came across your work and was really impressed by how you approach
-                     challenges Your ability to think outside the box is something I truly admire I would love to hear more 
-                    about your journey and how we can collaborate on something impactful What do you think   
-                    
-                - Example 2:
-                    
-                        Hi I was going through your profile and found your achievements truly inspiring The way
-                         you balance creativity and execution is something we value a lot 
-                        I would love to connect and explore how we can work together to create something meaningful  
-                    
-                - Example 3:
-                    
-                    Hey I noticed your recent contributions and found them incredibly relevant
-                     to what we are building Your unique perspective is something we could really benefit 
-                    from I would love to share some thoughts and hear your take on it What do you think    
-
-
+                
                 Final Instructions:
                 - Craft one complete hyper-personalized message that flows naturally from start to finish.
                 - The final output must strictly use the provided data to craft a message that is recipient-centric, creative, and concise.
                 - Do not include any additional text, commentary, or instructions—only output the final message.
-            `;
+      `;
 
-            const userPrompt = `
+      const userPrompt = `
                 Additional Context for Personalization:
                 Provide the following details to ensure a highly personalized and relevant outreach message:
                 --------------------------------------------------------------
@@ -99,23 +79,31 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 --------------------------------------------------------------
                 Using this structured input, craft a message that is highly tailored, engaging, and value-driven. The message should sound like it was written by a real human who has studied the recipient’s background and is genuinely interested in them. 
                 Avoid formal language and keep the tone casual, friendly, and professional.
-            `;
+      `;
 
-            const fullPrompt = `${systemPrompt}\n${userPrompt}`;
+      const generationConfig = {
+        temperature: 1.0,
+        topK: 10,
+        maxOutputTokens: 150,
+      };
 
-            const generationConfig = {
-                temperature: 1.0,
-                topK: 10,
-                maxOutputTokens: 150,
-            };
+      const chat = model.startChat({
+        history: [
+          {
+            role: "user",
+            parts: [{ text: systemPrompt }],
+          },
+        ],
+        generationConfig: generationConfig, 
+      });
 
-            const result = await model.generateContent(fullPrompt, { generationConfig });
-            let communication = result.response.text().trim();
-            console.log(communication);
-        }
-    } catch (error) {
-        console.error("Error processing Excel file:", error);
+      const result = await chat.sendMessage(userPrompt);
+      const communication = result.response.text().trim();
+      console.log(communication);
     }
+  } catch (error) {
+    console.error("Error processing Excel file:", error);
+  }
 }
 
 generatePersonalizedCommunication("./AI_dataset.xlsx", "Elon Musk", "Hiring Manager", "message", "Google");
