@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const xlsx = require("xlsx");
 
 async function generatePersonalizedCommunication(excelFilePath, senderName, senderTitle, communicationType, senderCompany) {
-  const genAI = new GoogleGenerativeAI("AIzaSyAJTfmOaT02tJZacgAzYq9t0EgIyzpCIR4");
+  const genAI = new GoogleGenerativeAI("");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   try {
@@ -56,7 +56,7 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 - Avoid using symbols like exclamation marks, commas, dashes, or parentheses.
                 - Do not use contractions like “who’s” or “let’s”—use full words like “who is” and “let us.”
                 - Ensure the message flows naturally and feels like it was written by a human.
-                
+
                 Final Instructions:
                 - Craft one complete hyper-personalized message that flows naturally from start to finish.
                 - The final output must strictly use the provided data to craft a message that is recipient-centric, creative, and concise.
