@@ -57,24 +57,30 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 - Do not use contractions like “who’s” or “let’s”—use full words like “who is” and “let us.”
                 - Ensure the message flows naturally and feels like it was written by a human.
 
-                8. **Examples for Reference**:
+                8. **What to Avoid**:
+                - Do not make the recipient feel like the message is AI-generated or forwarded to many people.
+                - Do not include false promises or guarantees.
+                - Do not use generic or overly formal language.
+                - Do not focus on yourself or your company; keep the message recipient-centric.
+
+                9. **Examples for Reference**:
                 - Example 1: 
-                    
-                    Hey I came across your work and was really impressed by how you approach
-                     challenges Your ability to think outside the box is something I truly admire I would love to hear more 
-                    about your journey and how we can collaborate on something impactful What do you think   
-                    
+
+                    Hey I came across your work and was really impressed by how you approach challenges
+                    Your ability to think outside the box is something I truly admire I would love to hear
+                    more about your journey and how we can collaborate on something impactful What do you think  
+
                 - Example 2:
-                    
-                        Hi I was going through your profile and found your achievements truly inspiring The way
-                         you balance creativity and execution is something we value a lot 
-                        I would love to connect and explore how we can work together to create something meaningful  
-                    
+
+                    Hi I was going through your profile and found your achievements truly inspiring 
+                    The way you balance creativity and execution is something we value a lot I would love 
+                    to connect and explore how we can work together to create something meaningful  
                 - Example 3:
-                    
-                    Hey I noticed your recent contributions and found them incredibly relevant
-                     to what we are building Your unique perspective is something we could really benefit 
-                    from I would love to share some thoughts and hear your take on it What do you think    
+
+                    Hey I noticed your recent contributions and found them 
+                    incredibly relevant to what we are building Your unique perspective is
+                    something we could really benefit from I would love to share some thoughts and 
+                    hear your take on it What do you think  
 
 
                 Final Instructions:
