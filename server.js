@@ -60,21 +60,22 @@ async function generatePersonalizedCommunication(excelFilePath, senderName, send
                 8. **Examples for Reference**:
                 - Example 1: 
                     
-                    Hey I came across your work and was really impressed by how you approach
-                     challenges Your ability to think outside the box is something I truly admire I would love to hear more 
-                    about your journey and how we can collaborate on something impactful What do you think   
+                    Hey I was looking at your background and noticed how your approach to problem solving aligns
+                     with what we value Your unique perspective on the industry is exactly what makes teams successful these days I would love to hear more 
+                    about what challenges you find most interesting and how we might collaborate on something meaningful 
                     
                 - Example 2:
                     
-                        Hi I was going through your profile and found your achievements truly inspiring The way
-                         you balance creativity and execution is something we value a lot 
-                        I would love to connect and explore how we can work together to create something meaningful  
+                       
+                    Hi Your career trajectory caught my attention The way you blend different skill sets shows the
+                    kind of creative thinking we appreciate I have been exploring some ideas that might resonate with
+                    your experience and would enjoy swapping thoughts when you have time  
                     
                 - Example 3:
                     
-                    Hey I noticed your recent contributions and found them incredibly relevant
-                     to what we are building Your unique perspective is something we could really benefit 
-                    from I would love to share some thoughts and hear your take on it What do you think    
+                     Hey The work you are doing stands out because it demonstrates exactly the kind of
+                      forward thinking we need more of in this field Your background suggests we might share some common 
+                     ground about building impactful solutions I would love to hear what projects excite you most these days    
 
 
                 Final Instructions:
